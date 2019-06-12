@@ -1,4 +1,4 @@
-version: '3'
+version: '2.4'
 services:
   mongo0:
     hostname: mongo0
@@ -8,6 +8,8 @@ services:
       - 27017:27017
     restart: "always"
     entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "rs0" ]
+    healthcheck:
+      test: mongo --eval "printjson(rs.isMaster())" | grep ismaster | grep true
 
   mongo1:
     hostname: mongo1
@@ -27,9 +29,9 @@ services:
     restart: "always"
     entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "rs0" ]
 
-  mongosetup:
-    hostname: mongosetup
-    container_name: mongosetup
+  cluster-setup:
+    hostname: cluster-setup
+    container_name: cluster-setup
     image: mongo
     restart: "no"
     depends_on:
@@ -40,3 +42,11 @@ services:
       - .:/scripts
     entrypoint: [ "bash", "/scripts/mongo-setup.sh" ]
 
+  cluster-started:
+    hostname: cluster-started
+    container_name: cluster-started
+    image: alpine
+    restart: "no"
+    depends_on:
+      mongo0:
+        condition: service_healthy
