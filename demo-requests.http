@@ -1,0 +1,40 @@
+POST http://localhost:8080/models
+Content-Type: application/json
+
+{
+  "name": "model"
+}
+
+###
+
+POST http://localhost:8080/models?type=WITH_EXCEPTION
+Content-Type: application/json
+
+{
+  "name": "model"
+}
+
+###
+
+POST http://localhost:8080/models?type=WITH_TRANSACTIONAL
+Content-Type: application/json
+
+{
+  "name": "model"
+}
+
+###
+
+POST http://localhost:8080/models?type=IN_TRANSACTIONAL_EVENT_LISTENER
+Content-Type: application/json
+
+{
+  "name": "model"
+}
+
+###
+
+GET http://localhost:8080/models
+Accept: application/json
+
+###

@@ -40,10 +40,3 @@ services:
       - .:/scripts
     entrypoint: [ "bash", "/scripts/mongo-setup.sh" ]
 
-#  dummy:
-#    hostname: dummy
-#    container_name: dummy
-#    image: alpine
-#    restart: "no"
-#    depends_on:
-#      - mongosetup

@@ -15,8 +15,11 @@ public class ModelController {
 	}
 
 	@PostMapping
-	public Mono<Model> create(@RequestBody Model model) {
-		return service.create(model);
+	public Mono<Model> create(
+			@RequestBody Model model,
+			@RequestParam(value = "type", required = false, defaultValue = "NORMAL") ModelEvent.Type type
+	) {
+		return service.create(model, type);
 	}
 
 	@GetMapping
