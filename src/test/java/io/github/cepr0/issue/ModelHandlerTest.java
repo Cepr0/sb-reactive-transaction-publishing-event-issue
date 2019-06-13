@@ -5,6 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.test.context.ActiveProfiles;
+import org.testcontainers.containers.DockerComposeContainer;
+
+import java.io.File;
 
 import static io.github.cepr0.issue.ModelEvent.Type.*;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -15,6 +18,12 @@ import static org.mockito.Mockito.verify;
 @SpringBootTest
 @ActiveProfiles("test")
 class ModelHandlerTest {
+
+    static {
+        DockerComposeContainer cluster = new DockerComposeContainer(new File("docker-compose.yml"))
+                .withLocalCompose(true);
+        cluster.start();
+    }
 
     @SpyBean private ModelHandler handler;
     @Autowired private ModelService service;
