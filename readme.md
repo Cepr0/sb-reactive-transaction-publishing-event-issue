@@ -56,7 +56,7 @@ public void handleEventInTransactionEventListener(ModelEvent event) {
 
 **Reproducing the issue**
 
-1) Start a MongoDB Replica Set (within the project folder)
+1) Start a MongoDB Replica Set cluster (within the project folder)
 ```bash
 docker-compose up -d
 ```
@@ -66,13 +66,19 @@ docker-compose up -d
 mvn spring-boot:run
 ```
 
+(or you can start cluster simply with the application: `mvn spring-boot:run Dspring.profiles.active=replSet`)
+
 3) Run the requests from the `demo-requests.http` file 
 
 (or you can run the application and requests within Intellij IDEA)
 
-4) Don't forget to stop the cluster ;)
+4) Don't forget to stop the cluster if you explicitly start it
 ```bash
 docker-compose down
 ```
 
 Or you can check the [`ModelHandlerTest`](src/test/java/io/github/cepr0/issue/ModelHandlerTest.java) class.
+
+**Requirements**
+
+Docker, Docker Compose, Java 8, Maven
