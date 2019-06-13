@@ -66,7 +66,7 @@ docker-compose up -d
 mvn spring-boot:run
 ```
 
-(or you can start cluster simply with the application: `mvn spring-boot:run Dspring.profiles.active=replSet`)
+(or you can start cluster simply with the application: `mvn spring-boot:run -Dspring.profiles.active=replSet`)
 
 3) Run the requests from the `demo-requests.http` file 
 
