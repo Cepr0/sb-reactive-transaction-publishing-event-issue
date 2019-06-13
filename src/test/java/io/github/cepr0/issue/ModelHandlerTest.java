@@ -38,7 +38,7 @@ class ModelHandlerTest {
     void handleEventWithTransactional() {
         assertThatExceptionOfType(IllegalStateException.class)
                 .isThrownBy(() -> service.create(model, WITH_TRANSACTIONAL).block())
-                .withMessageStartingWith("Specified transaction manager is not a PlatformTransactionManager");
+                .withMessageStartingWith("Specified transaction manager is not a PlatformTransactionManager: org.springframework.data.mongodb.ReactiveMongoTransactionManager");
     }
 
     @Test
