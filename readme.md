@@ -58,7 +58,7 @@ public void handleEventInTransactionEventListener(ModelEvent event) {
 
 1) Start a MongoDB Replica Set (within the project folder)
 ```bash
-docker-composer up -d
+docker-compose up -d
 ```
 
 2) Start the application
@@ -72,7 +72,7 @@ mvn spring-boot:run
 
 4) Don't forget to stop the cluster ;)
 ```bash
-docker-composer down
+docker-compose down
 ```
 
 Or you can check the [`ModelHandlerTest`](src/test/java/io/github/cepr0/issue/ModelHandlerTest.java) class.
