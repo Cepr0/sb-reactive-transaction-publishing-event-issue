@@ -24,7 +24,7 @@ public class ModelHandler {
     }
 
     @Transactional(propagation = Propagation.MANDATORY)
-    @EventListener(condition = "#event.withTransaction()")
+    @EventListener(condition = "#event.withTransactional()")
     public void handleEventWithTransactional(ModelEvent event) {
         log.info("[i] Handled event: {}, with transactional", event.getModel());
     }

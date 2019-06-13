@@ -35,7 +35,7 @@ org.springframework.data.mongodb.ReactiveMongoTransactionManager`
 
 ```java
 @Transactional(propagation = Propagation.MANDATORY)
-@EventListener(condition = "#event.withTransaction()")
+@EventListener(condition = withTransactional)
 public void handleEventWithTransactional(ModelEvent event) {
     log.info("[i] Handled event: {}, with transactional", event.getModel());
 }

@@ -20,7 +20,7 @@ public class ModelEvent {
 		return type == Type.WITH_EXCEPTION;
 	}
 
-	public boolean withTransaction() {
+	public boolean withTransactional() {
 		return type == Type.WITH_TRANSACTIONAL;
 	}
 
