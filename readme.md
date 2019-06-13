@@ -29,7 +29,7 @@ public void handleNormalEvent(ModelEvent event) {
 
 If we add `@Transactional` annotation with `MANDATORY` propagation parameter to check that 
 the 'event listener' method is invoked in the existent transaction, 
-then the `IllegalStateException` will be raised with message: 
+then the `IllegalStateException` is raised with a message: 
 `Specified transaction manager is not a PlatformTransactionManager: 
 org.springframework.data.mongodb.ReactiveMongoTransactionManager`  
 
@@ -44,7 +44,7 @@ public void handleEventWithTransactional(ModelEvent event) {
 **@TransactionalEventListener**
 
 If we use `@TransactionalEventListener` (instead of `@EventListener`) then 
-the 'event listener' method doesn't invoked at all.   
+the 'event listener' method is not invoked at all.   
 
 ```java
 // @Async
