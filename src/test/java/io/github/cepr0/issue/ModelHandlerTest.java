@@ -6,6 +6,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.test.context.ActiveProfiles;
 import org.testcontainers.containers.DockerComposeContainer;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
 
 import java.io.File;
 
@@ -17,13 +19,13 @@ import static org.mockito.Mockito.verify;
 
 @SpringBootTest
 @ActiveProfiles("test")
+@Testcontainers
 class ModelHandlerTest {
 
-    static {
-        DockerComposeContainer cluster = new DockerComposeContainer(new File("docker-compose.yml"))
+    @Container
+    private static final DockerComposeContainer cluster =
+          new DockerComposeContainer(new File("docker-compose.yml"))
                 .withLocalCompose(true);
-        cluster.start();
-    }
 
     @SpyBean private ModelHandler handler;
     @Autowired private ModelService service;
